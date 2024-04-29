@@ -15,7 +15,11 @@
 */
 
 //Code here
-
+const me = {
+  "name": "Koa",
+  "age": 18
+}
+alert(me.name)
 /// ////////////// PROBLEM 2 ///////////////////
 
 /*
@@ -24,21 +28,30 @@
 */
 
 //Code here
-
+const favoriteThings = {
+  "band": "Eminem",
+  "food": "Chicken",
+  "person": "Jesus",
+  "book": "Five Kingdoms",
+  "movie": "Top Gun Maverick",
+  "holiday": "4th of July"
+}
 /*
   After you've made your object, use bracket or dot notation to add another key named 'car' with the value being your favorite car
   and then another key named 'brand' with the value being your favorite brand.
 */
 
 //Code here
-
+favoriteThings["car"] = "null"
+favoriteThings["brand"] = "Tesla"
 /*
   Now use bracket or dot notation to change the value of the food key in your favoriteThings object to be 'Chicken Nuggets'
   and change the value of the book key in your favoriteThings object to be 'Harry Potter'.
 */
 
 //Code here
-
+favoriteThings["food"] = "Chicken Nuggets"
+favoriteThings["book"] = "Harry Potter"
 /// ////////////// PROBLEM 3 ///////////////////
 
 // Do not edit the code below.
@@ -59,7 +72,8 @@ const user2 = {
 */
 
 //Code Here
-
+user2["name"] = "Bryan G. Smith"
+user2["email"] = "bryan.smith@devmounta.in"
 /// ////////////// PROBLEM 4 ///////////////////
 
 let shoppingCart = {};
@@ -70,7 +84,9 @@ let shoppingCart = {};
 */
 
 //Code Here
-
+function addToCart(item, quantity) {
+  shoppingCart[item] = quantity
+}
 /// ////////////// PROBLEM 5 ///////////////////
 
 /*
@@ -80,7 +96,14 @@ let shoppingCart = {};
 */
 
 //Code Here
-
+function greaterThan10(object) {
+  for (const key in object) {
+    if (object[key] > 10) {
+      object[key] = 0
+    }
+  }
+  return object
+}
 /// ////////////// PROBLEM 6 ///////////////////
 
 /*
@@ -90,7 +113,12 @@ let shoppingCart = {};
 */
 
 //Code Here
-
+function double(object) {
+  for (const num in object) {
+    object[num] *= 2
+  }
+  return object
+}
 /// ////////////// PROBLEM 7 ///////////////////
 
 /*
@@ -99,6 +127,11 @@ let shoppingCart = {};
 
 function showValues(obj) {
   //Code Here
+  let result = ""
+  for (const word in obj) {
+    result += obj[word]
+  }
+  return result
 }
 
 /// ////////////// PROBLEM 8 ///////////////////
@@ -110,7 +143,14 @@ function showValues(obj) {
 */
 
 //Code Here
-
+function makeCard(cardNumber, expirationDate, securityCode) {
+  const object = {
+    "cardNumber": cardNumber,
+    "expirationDate": expirationDate,
+    "securityCode": securityCode
+  }
+  return object
+}
 /// ////////////// PROBLEM 9 ///////////////////
 
 /*
@@ -119,7 +159,10 @@ function showValues(obj) {
 */
 
 //Code Here
-
+function removePassword(object) {
+  delete object["password"]
+  return object
+}
 /// ////////////// PROBLEM 10 ///////////////////
 
 // Do not edit the code below.
@@ -136,7 +179,11 @@ const deleteTheBigNumbers = {
 */
 
 //Code Here
-
+for (const num in deleteTheBigNumbers) {
+  if (deleteTheBigNumbers[num] > 100) {
+    delete deleteTheBigNumbers[num]
+  }
+}
 /*
   Once you complete a problem, refresh ./destructuring.html in your browser and check to see if the problem's test(s) are passing.
   Passed tests will be indicated by a green circle.
@@ -161,7 +208,7 @@ const carDetails = {
 */
 
 //Code Here
-
+const {color, make, model, year} = carDetails
 /// ////////////// PROBLEM 12 ///////////////////
 
 /*
@@ -172,7 +219,7 @@ const carDetails = {
 
 function greeting(obj) {
   //Code Here
-
+  const {firstName, lastName, title} = obj
   // Do not edit the code below.
   return 'Hello, ' + title + ' ' + firstName + ' ' + lastName + '!';
   // Do not edit the code above.
@@ -189,7 +236,10 @@ function greeting(obj) {
 */
 
 //Code Here
-
+function totalPopulation(object) {
+  const {utah, california, texas, arizona} = object
+  return utah + california + texas + arizona
+}
 /// ////////////// PROBLEM 14 ///////////////////
 
 /*
@@ -201,7 +251,17 @@ function greeting(obj) {
 */
 
 //Code Here
-
+function usCanadaBorder(array) {
+  const [latitude, longitude] = array
+  if (latitude === 49) {
+    if (longitude >= -123) {
+      if (longitude <= -95) {
+        return true
+      }
+    }
+  }  
+  return false
+}
 /// ////////////// PROBLEM 15 ///////////////////
 
 // Do not edit the code below.
@@ -247,7 +307,17 @@ const employees = [
 */
 
 //Code Here
-
+function employeeUpdater() {
+  for (let i = 0; i < employees.length; i++) {
+    if (employees[i]["firstName"] === "Theo") {
+      delete employees[i]
+    }
+    else if (employees[i]["firstName"] === "Lorie") {
+      employees[i]["department"] = "HR"
+    }
+  }
+  return employees
+}
 /// ////////////// PROBLEM 16 ///////////////////
 
 // Do not edit the code below.
@@ -273,8 +343,8 @@ const cat = {
 */
 
 //Code Here
-let grumpyActivity;
-let fluffy2ndFriend;
+let grumpyActivity = cat["catFriends"][0].activities[1];
+let fluffy2ndFriend = cat["catFriends"][1].name;
 
 /// ////////////// PROBLEM 17 ///////////////////
 
@@ -313,7 +383,11 @@ const myCar = {
 */
 
 //Code Here
-
+function recordCleaner() {
+  for (let i = 0; i < myCar["accidents"].length; i++) {  
+    myCar["accidents"][i]["atFaultForAccident"] = false
+  }
+}
 /// ////////////// PROBLEM 18 ///////////////////
 
 /*
@@ -331,7 +405,9 @@ const myCar = {
 */
 
 //Code Here
-
+function largeNumbers({first, second, third}) {
+  return Math.min(first, second, third)
+}
 /// ////////////// PROBLEM 19 ///////////////////
 
 /*
@@ -341,3 +417,15 @@ const myCar = {
 */
 
 //Code Here
+function numberGroups({a, b, c}) {
+  let num = Math.max.apply(Math, [a.length, b.length, c.length])
+  if (num === a.length) {
+    return a
+  }
+  if (num === b.length) {
+    return b
+  }
+  if (num === c.length) {
+    return c
+  }
+}
